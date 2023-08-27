@@ -9,4 +9,8 @@ class Author < ApplicationRecord
     return "#{yob}#{bce_suffix}"
   end
 
+  def quotes
+    Quote.where(author_id: id)
+  end
+
 end
