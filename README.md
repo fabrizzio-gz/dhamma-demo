@@ -1,24 +1,60 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
 
-Things you may want to cover:
+A basic GraphQL backend of authors and their quotes.
 
-* Ruby version
+## Setup
 
-* System dependencies
+Install dependencies and load dummy data to DB.
 
-* Configuration
+```bash
+$ bundle install
+$ rails db:setup
+```
 
-* Database creation
+## Usage
 
-* Database initialization
+This project has no frontend. Run the project and access `/graphiql` to make GraphQL queries.
 
-* How to run the test suite
+To run the project:
+```bash
+$ rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Then navigate from your browser to http://127.0.0.1:3000 (it redirects to `/graphiql`).
 
-* Deployment instructions
+### Example queries
 
-* ...
+Get a list of all authors:
+
+```graphql
+{
+  authors {
+    name
+  }
+}
+```
+
+Get quote with a given ID:
+```graphql
+{
+  quote(quoteId: 1) {
+    message,
+    author {
+      name
+    }
+  }
+}
+```
+
+Get all quotes by a given author:
+```graphql
+{
+  author(id: 1) {
+    quotes {
+      message
+    }
+  }
+}
+```
