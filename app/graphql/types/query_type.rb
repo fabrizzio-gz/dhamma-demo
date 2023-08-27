@@ -21,10 +21,12 @@ module Types
     end
 
     field :quotes, [Types::QuoteType], null:true,
-      description: "Returns a list of all quotes"
+      description: "Returns a list of all quotes" do
+        argument :author_id, ID, required: false
+      end
 
-    def quotes
-      Quote.all
+    def quotes(author_id: nil)
+      !author_id ? Quote.all : Quote.where(author_id:)
     end
 
     field :quote, Types::QuoteType, null:true,
