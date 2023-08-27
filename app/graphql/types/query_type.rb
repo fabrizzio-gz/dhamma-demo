@@ -13,5 +13,13 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :authors, [Types::AuthorType], null: true,
+      description: "Returns a list of all authors"
+
+    def authors
+      Author.all
+    end
+
   end
 end
