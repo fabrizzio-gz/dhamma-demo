@@ -21,5 +21,14 @@ module Types
       Author.all
     end
 
+    field :author, Types::AuthorType, null:true,
+      description: "Returns an author by ID" do
+        argument :id, ID, required: true
+      end
+
+    def author(id:)
+      Author.find_by(id:)
+    end
+
   end
 end
