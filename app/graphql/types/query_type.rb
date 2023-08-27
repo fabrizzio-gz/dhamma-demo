@@ -27,5 +27,14 @@ module Types
       Quote.all
     end
 
+    field :quote, Types::QuoteType, null:true,
+      description: "Returns a quote by quote or author ID" do
+        argument :quote_id, ID, required: false
+      end
+
+    def quote(quote_id:)
+      Quote.find_by(id: quote_id)
+    end
+
   end
 end
