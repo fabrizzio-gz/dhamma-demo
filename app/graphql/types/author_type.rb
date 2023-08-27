@@ -4,4 +4,6 @@ class Types::AuthorType < Types::BaseObject
   field :id, ID, null:false
   field :name, String, null:false
   field :year_of_birth, String, null:true
+  field :quotes, [Types::QuoteType], null:true
+
 end
