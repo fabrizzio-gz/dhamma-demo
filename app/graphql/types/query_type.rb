@@ -20,5 +20,12 @@ module Types
       Author.find_by(id:)
     end
 
+    field :quotes, [Types::QuoteType], null:true,
+      description: "Returns a list of all quotes"
+
+    def quotes
+      Quote.all
+    end
+
   end
 end
