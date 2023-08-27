@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_27_153458) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_27_165141) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.integer "yob"
@@ -19,4 +19,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_153458) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "quotes", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.string "message"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_quotes_on_author_id"
+  end
+
+  add_foreign_key "quotes", "authors"
 end
